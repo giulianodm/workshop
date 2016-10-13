@@ -1,0 +1,16 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>
+      <h4>  Informe o token para ter acesso a lista de inscritos.</h4>
+      <div>
+      <form name="listForm">
+        <div class="form-group" ng-class="{ 'has-error': listForm.nome.$invalid && listForm.nome.$touched}">
+        <input type="password" class="form-control" id="token" name="token" ng-model="token" placeholder="Informe token para download" required autofocus>
+        </div>
+      <button class="btn btn-primary" type="button" ng-click="download()" ng-disabled="listForm.$invalid">Download</button>
+      </form>
+
+    </div>
+  </div>

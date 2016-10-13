@@ -1,0 +1,66 @@
+<!doctype html>
+<html ng-app="workshopApp" >
+  <head>
+      <meta charset="utf-8">
+      <script src="lib/angular/angular.js"></script>
+      <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="lib/angular-route/angular-route.js"></script>
+      <script src="lib/angular-animate/angular-animate.js"></script>
+      <link rel="stylesheet" href="style/bootstrap.min.css">
+      <script src="js/app.js"></script>
+      <base href="/">
+      <title>Workshop</title>
+  </head>
+<body ng-controller="AppCtrl">
+
+
+<!-- main -->
+  <div ng-view></div>
+
+
+<!-- Modal -->
+<script type="text/ng-template" id="ModalContent.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Por favor preencha os seguintes campos</h4>
+    </div>
+    <div class="modal-body">
+
+      <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>
+
+      <form name="myForm">
+        <div class="form-group" ng-class="{ 'has-error': myForm.nome.$invalid && myForm.nome.$touched}">
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" id="nome" name="nome" ng-model="nome" placeholder="Nome" required autofocus>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': myForm.email.$invalid  && myForm.email.$touched}">
+        <label for="email">E-mail:</label>
+        <input type="text" class="form-control" id="email" name="email" ng-model="email" placeholder="E-mail" required>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': myForm.telefone.$invalid  && myForm.telefone.$touched}">
+        <label for="telefone">Telefone:</label>
+        <input type="text" class="form-control" id="telefone" name="telefone" ng-model="telefone" required placeholder="Telefone">
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': myForm.empresa.$invalid  && myForm.empresa.$touched}">
+        <label for="empresa">Empresa:</label>
+        <input type="text" class="form-control" id="empresa" name="empresa" ng-model="empresa" required placeholder="Empresa">
+        </div>
+
+        <div class="form-group">
+        <label for="expectativa">Expectativa (opcional):</label>
+        <textarea class="form-control" rows="3" id="expectativa" name="expectativa" ng-model="expectativa" placeholder="Qual sua expectativa em relação a este workshop?" ></textarea>
+        </div>
+      </form>
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+        <button class="btn btn-primary" type="button" ng-click="send()" ng-disabled="myForm.$invalid">Enviar</button>
+    </div>
+
+</script>
+</body>
+</html>
