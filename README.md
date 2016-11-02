@@ -4,11 +4,11 @@ Esta aplicação utiliza Node.js e Cloudant para inscrição de pessoas em works
 
 url para usuário se inscrever:
 
-https://<sua app>/inicio
+https://\<sua app\>/inicio
 
 url para baixar a lista de participantes:
 
-https://<sua app>/list (necessário informar o token, indicado em config.js)
+https://\<sua app\>/list (necessário informar o token, indicado em config.js)
 
 # Como utilizar?
 
