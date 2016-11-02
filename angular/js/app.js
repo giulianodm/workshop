@@ -75,7 +75,12 @@ reclameApp.controller('ConfirmacaoCtrl', function($scope, $http, $location) {
 });
 
 reclameApp.controller('ListCtrl', function($scope, $http, $location) {
+
     $scope.alerts = [];
+    $scope.isNotChrome = !(/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor));
+      if ($scope.isNotChrome) {
+        $scope.alerts.push({ type: 'warning', msg: 'Por favor utilizar o Google Chrome' });
+      }
     $scope.download = function () {
       var req = {
        method: 'POST',

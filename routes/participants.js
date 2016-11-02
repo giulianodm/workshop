@@ -27,7 +27,6 @@ var express = require('express')
   });
 
 
-
  var sendemail = function (email, nome){
  //envia e-mail para participante
  var helper = require('sendgrid').mail;
@@ -99,6 +98,7 @@ var express = require('express')
       //return the list or the error
       if (erro == 0){
         //response.writeHead(200, obtemLista(), {'Content-Type': 'text/csv'});
+        response.writeHead(200, {'Content-Type': 'application/force-download','Content-disposition':'attachment; filename=participants.csv'});
         response.send(obtemLista());
         response.end();
       } else {
@@ -106,7 +106,7 @@ var express = require('express')
         response.writeHead(400, mensagem, {'Content-Type': 'text/plain'});
         response.end();
       }
-    });
+
   });
 
   var obtemLista =  function() {

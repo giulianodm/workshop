@@ -15,7 +15,8 @@
     "cloudant": "latest",
     "sync-request": "latest",
     "json2csv": "latest",
-    "sendgrid": "latest"
+    "sendgrid": "latest",
+    "express-csv": "latest"
   },
   "repository": {},
   "engines": {

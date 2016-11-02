@@ -2,6 +2,14 @@
 
 Esta aplicação utiliza Node.js e Cloudant para inscrição de pessoas em workshops.
 
+url para usuário se inscrever:
+
+https://<sua app>/inicio
+
+url para baixar a lista de participantes:
+
+https://<sua app>/list (necessário informar o token, indicado em config.js)
+
 # Como utilizar?
 
 * Bluemix Services e Runtimes
@@ -10,7 +18,7 @@ Crie os seguintes serviços e runtimes no Bluemix:
 
 Node.js: SDK for Node.js Cloud Foundry application
 
-Cloudant: crie um serviço Cloudant com o nome workshop-cloudant e o associe à aplicação Node.js
+Cloudant: crie um serviço Cloudant com o nome **workshop-cloudant** e o associe à aplicação Node.js
 
 Sendgrid: crie um serviço no Sendgrid para envio de e-mail
 
@@ -34,9 +42,10 @@ Atualize o conteúdo dos dois arquivos renomeados com seus dados.
 * Instruções Cloudant:
 
 O serviço cloudant deve ter um database com o nome de sua preferência e
-com um search index em um design document chamado design_participants, com a seguinte função:
+com um search index em um design document chamado **design_participants**,
+este database deve apresentar a seguinte função:
 
-*participants*
+*participants (nome da função)*
 ```javascript
 function (doc) {
   index("nome_evento", doc.nome_evento);

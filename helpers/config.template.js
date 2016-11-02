@@ -17,7 +17,7 @@ config.db =
 config.workshop =
 {
   "nome_evento" : /* ADD EVENT NAME HERE, EXAMPLE: 'workshopintegracao' */,
-  "data_evento" : new Date(YYYY, MM, DD) //atenção mês (MM) vai de 0 a 11
+  "data_evento" : new Date(YYYY, MM, DD), //atenção mês (MM) vai de 0 a 11
   "token": /* ADD TOKEN TO ACCESS PARTICIPANTS LIST*/
 }
 
