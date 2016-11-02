@@ -51,7 +51,7 @@ var express = require('express')
 
  //envia e-mail notificacao
  subject = config.email.subject;
- content = new helper.Content('text/plain', 'inscricao no evento: ' + email);
+ content = new helper.Content('text/plain', 'inscricao no evento: ' + nome + ' - ' + email);
  for (var j in config.email.notification_list){
    to_email = new helper.Email(config.email.notification_list[j]);
    var notification = new helper.Mail(from_email, subject, to_email, content);
@@ -69,6 +69,15 @@ var express = require('express')
 
 
   router.post('/list', function(request, response) {
+
+    //validação do token no arquivo de configuração
+    if (config.workshop.token == request.body.token) {
+      erro = 0;
+    } else{
+      erro = 1; mensagem = 'token não confere'
+    }
+
+    /* validação do token no db
     var database = db.initDBConnection();
     db.readDocument(database, 'idtoken', function(err, data){
       //error handling
@@ -85,7 +94,9 @@ var express = require('express')
           erro = 1; mensagem = 'token não confere'
         }
       };
-        //return the list or the error
+      */
+
+      //return the list or the error
       if (erro == 0){
         //response.writeHead(200, obtemLista(), {'Content-Type': 'text/csv'});
         response.send(obtemLista());
@@ -105,7 +116,7 @@ var express = require('express')
                      config.db.designdocument + '/_search/participants?' + parameters;
     var res = request('GET', urlConsulta);
     data = JSON.parse(res.getBody('utf8'));
-    //console.log(JSON.stringify(data.rows));
+
     var values = [];
     for (var i in data.rows){
       values.push(data.rows[i].doc);

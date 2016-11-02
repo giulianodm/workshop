@@ -1,0 +1,10 @@
+applications:
+- path: .
+  memory: 512M
+  instances: 1
+  domain: mybluemix.net
+  name: <substitua pelo nome da sua app>
+  host: <substitua pelo nome da sua app>
+  disk_quota: 1024M
+  services:
+  - workshop-cloudant
