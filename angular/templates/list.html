@@ -9,7 +9,7 @@
         <div class="form-group" ng-class="{ 'has-error': listForm.nome.$invalid && listForm.nome.$touched}">
         <input type="password" class="form-control" id="token" name="token" ng-model="token" placeholder="Informe token para download" required autofocus>
         </div>
-      <button class="btn btn-primary" type="button" ng-click="download()" ng-disabled="listForm.$invalid || isNotChrome">Download</button>
+      <button class="btn btn-primary" type="button" ng-click="download()" ng-disabled="listForm.$invalid">Download</button>
       </form>
 
     </div>

@@ -32,9 +32,9 @@ Clone o repositório
 
 Em seguida:
 
-renomeie config.template.js para config.js.
+renomeie helpers/config.template.js para helpers/config.js.
 
-renomeie manifest.template.yml para manifest.template.yml.
+renomeie manifest.yml.template para manifest.template.yml.
 
 Atualize o conteúdo dos dois arquivos renomeados com seus dados.
 

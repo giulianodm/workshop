@@ -38,6 +38,21 @@
         <input type="text" class="form-control" id="email" name="email" ng-model="email" placeholder="E-mail" required>
         </div>
 
+
+        <label for="documento">Tipo documento:</label>
+        <div class="form-group" ng-class="{ 'has-error': myForm.telefone.$invalid  && myForm.telefone.$touched}">
+                  <select id="tipo_documento"  class="form-control">
+                     <option value="rg" selected="selected">RG</option>
+                     <option value="cnh">CNH</option>
+                     <option value="passaporte">Passaporte</option>
+                  </select>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': myForm.documento.$invalid  && myForm.documento.$touched}">
+        <label for="documento">Número documento:</label>
+        <input type="text" class="form-control" id="documento" name="documento" ng-model="documento" placeholder="Documento de identidade" required>
+        </div>
+
         <div class="form-group" ng-class="{ 'has-error': myForm.telefone.$invalid  && myForm.telefone.$touched}">
         <label for="telefone">Telefone:</label>
         <input type="text" class="form-control" id="telefone" name="telefone" ng-model="telefone" required placeholder="Telefone">

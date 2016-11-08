@@ -16,9 +16,12 @@ reclameApp.config(['$routeProvider', '$locationProvider',
       }).when('/list', {
   		            templateUrl: 'templates/list.html',
   		            controller:  'ListCtrl'
+      }).when('/list_contents', {
+            		  templateUrl: 'templates/list_contents.html',
+            		  controller:  'ListContentsCtrl'
       }).otherwise({
-		            redirectTo: '/inicio'
-        });
+		             redirectTo: '/inicio'
+      });
 
       $locationProvider.html5Mode(true);
   }]);
@@ -43,6 +46,8 @@ reclameApp.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, 
      url: '/api/participants/add',
      data: { nome: $scope.nome,
             email: $scope.email,
+            tipo_documento: $scope.tipo_documento,
+            documento: $scope.documento,
             telefone: $scope.telefone,
             empresa: $scope.empresa,
             expectativa: $scope.expectativa?$scope.expectativa:'nao informado'
@@ -74,35 +79,37 @@ reclameApp.controller('ConfirmacaoCtrl', function($scope, $http, $location) {
     $scope.alerts = [];
 });
 
-reclameApp.controller('ListCtrl', function($scope, $http, $location) {
+reclameApp.controller('ListCtrl', function($scope, $rootScope, $http, $location) {
 
     $scope.alerts = [];
-    $scope.isNotChrome = !(/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor));
-      if ($scope.isNotChrome) {
-        $scope.alerts.push({ type: 'warning', msg: 'Por favor utilizar o Google Chrome' });
-      }
     $scope.download = function () {
+
       var req = {
        method: 'POST',
        url: '/api/participants/list',
        data: { token: $scope.token }
       }
-      $http(req).
-        success(function(data, status, headers, config) {
-          var anchor = angular.element('<a/>');
-              anchor.attr({
-                  href: 'data:attachment/csv;charset=utf-8,' + encodeURI(data),
-                  target: '_blank',
-                  download: 'participants.csv'
-              })[0].click();
-            $scope.alerts.push({ type: 'success', msg: 'Token validado com sucesso!' });
+
+      $http(req).success(function(data, status, headers, config) {
+
+          $rootScope.lista = data;
+          $scope.alerts.push({ type: 'success', msg: 'Token validado com sucesso!' });
+          $location.path('/list_contents');
+
         }).
         catch(function(data, status, headers, config) {
           // handle error
-          $scope.alerts.push({ type: 'danger', msg: 'Erro: ' + data.statusText });
+          $scope.alerts.push({ type: 'danger', msg: 'Erro: ' + data.statusText});
         });
+
     };
     $scope.closeAlert = function(index) {
       $scope.alerts.splice(index, 1);
     };
+});
+
+reclameApp.controller('ListContentsCtrl', function($scope, $rootScope, $http, $location) {
+    $scope.alerts = [];
+    $scope.lista = $rootScope.lista;
+    if ($scope.lista == null) $location.path('/list'); //verifica se é refresh
 });

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Lista de Inscritos</div>
+        <!-- Table -->
+        <table class="table">
+          <tr>
+            <th>empresa</th>
+            <th>nome</th>
+            <th>email</th>
+            <th>tipo_documento</th>
+            <th>documento</th>
+            <th>data_inscricao</th>
+            <th>expectativa</th>
+            <th>telefone</th>
+          </tr>
+            <tr ng-repeat="x in lista">
+              <td>{{ x.doc.empresa }}</td>
+              <td>{{ x.doc.nome }}</td>
+              <td>{{ x.doc.email }}</td>
+              <td>{{ x.doc.tipo_documento }}</td>
+              <td>{{ x.doc.documento }}</td>
+              <td>{{ x.doc.data_inscricao }}</td>
+              <td>{{ x.doc.expectativa }}</td>
+              <td>{{ x.doc.telefone }}</td>
+            </tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

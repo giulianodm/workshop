@@ -44,8 +44,6 @@ var express = require('express')
  });
  sg.API(request, function(error, response) {
    console.log("[api][participants add] sendmail participante: " + response.statusCode);
-   //console.log(response.body);
-   //console.log(response.headers);
  });
 
  //envia e-mail notificacao
@@ -66,7 +64,6 @@ var express = require('express')
 
 };
 
-
   router.post('/list', function(request, response) {
 
     //validação do token no arquivo de configuração
@@ -75,36 +72,14 @@ var express = require('express')
     } else{
       erro = 1; mensagem = 'token não confere'
     }
-
-    /* validação do token no db
-    var database = db.initDBConnection();
-    db.readDocument(database, 'idtoken', function(err, data){
-      //error handling
-      var mensagem = '';
-      var erro = 0;
-      if (err != null){
-        erro = 1; mensagem = JSON.stringify(err);
-      } else if (data == 'Error: missing'){
-        erro = 1; mensagem = 'tokenid não encontrado no cloudant';
-      } else{
-        if (data.token == request.body.token) {
-          erro = 0;
-        } else{
-          erro = 1; mensagem = 'token não confere'
-        }
-      };
-      */
-
       //return the list or the error
       if (erro == 0){
-        //response.writeHead(200, obtemLista(), {'Content-Type': 'text/csv'});
-        response.writeHead(200, {'Content-Type': 'application/force-download','Content-disposition':'attachment; filename=participants.csv'});
         response.send(obtemLista());
         response.end();
       } else {
         console.log('[api][participants list] error: ' + mensagem + '.');
-        response.writeHead(400, mensagem, {'Content-Type': 'text/plain'});
-        response.end();
+        response.statusMessage = mensagem;
+        response.status(400).end();        
       }
 
   });
@@ -116,14 +91,8 @@ var express = require('express')
                      config.db.designdocument + '/_search/participants?' + parameters;
     var res = request('GET', urlConsulta);
     data = JSON.parse(res.getBody('utf8'));
+    return data.rows;
 
-    var values = [];
-    for (var i in data.rows){
-      values.push(data.rows[i].doc);
-    }
-    var fields = ['nome', 'email', 'telefone', 'empresa', 'data_inscricao', 'expectativa'];
-    var csv = json2csv({ data: values, fields: fields });
-    return csv;
   };
 
   module.exports = router;

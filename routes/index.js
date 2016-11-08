@@ -5,6 +5,9 @@ router.get('/', function(req, res){
 router.get('/list', function(req, res){
   res.render('app.html');
 });
+router.get('/list_contents', function(req, res){
+  res.render('app.html');
+});
 router.get('/inicio', function(req, res){
   res.render('app.html');
 });
