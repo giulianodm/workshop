@@ -40,6 +40,8 @@ reclameApp.controller('AppCtrl', function ($scope, $uibModal, $log, $http) {
 
 reclameApp.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, $http, $location, $timeout) {
   $scope.alerts = [];
+  $scope.tipo_documento = 'rg';
+
   $scope.send = function () {
     var req = {
      method: 'POST',

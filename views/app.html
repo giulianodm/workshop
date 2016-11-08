@@ -41,7 +41,7 @@
 
         <label for="documento">Tipo documento:</label>
         <div class="form-group" ng-class="{ 'has-error': myForm.telefone.$invalid  && myForm.telefone.$touched}">
-                  <select id="tipo_documento"  class="form-control">
+                  <select class="form-control" id="tipo_documento"  ng-model="tipo_documento" name="tipo_documento">
                      <option value="rg" selected="selected">RG</option>
                      <option value="cnh">CNH</option>
                      <option value="passaporte">Passaporte</option>
