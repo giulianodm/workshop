@@ -36,6 +36,10 @@ renomeie helpers/config.template.js para helpers/config.js.
 
 renomeie manifest.yml.template para manifest.template.yml.
 
+renomeie angular/templates/confirmacao.template.html para angular/templates/confirmacao.html.
+
+renomeie angular/templates/inicio.template.html para angular/templates/inicio.html.
+
 Atualize o conteúdo dos dois arquivos renomeados com seus dados.
 
 
@@ -43,12 +47,20 @@ Atualize o conteúdo dos dois arquivos renomeados com seus dados.
 
 O serviço cloudant deve ter um database com o nome de sua preferência e
 com um search index em um design document chamado **design_participants**,
-este database deve apresentar a seguinte função:
+com a seguinte implementação:
 
-*participants (nome da função)*
 ```javascript
-function (doc) {
-  index("nome_evento", doc.nome_evento);
+{
+  "_id": "_design/design_participants",
+  "_rev": "3-b049119d5e89deeda5633a6055783017",
+  "views": {},
+  "language": "javascript",
+  "indexes": {
+    "participants": {
+      "analyzer": "standard",
+      "index": "function (doc) {\n  index(\"nome_evento\", doc.nome_evento);\n}"
+    }
+  }
 }
 ```
 
