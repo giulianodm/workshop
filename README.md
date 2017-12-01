@@ -30,17 +30,17 @@ Clone o repositório
   git clone https://github.com/placerda/workshop.git
 ```
 
-Em seguida:
+Em seguida renomeie os seguintes arquivos:
 
-renomeie helpers/config.template.js para helpers/config.js.
+helpers/config.template.js para helpers/config.js.
 
-renomeie manifest.yml.template para manifest.template.yml.
+manifest.yml.template para manifest.template.yml.
 
-renomeie angular/templates/confirmacao.template.html para angular/templates/confirmacao.html.
+angular/templates/confirmacao.template.html para angular/templates/confirmacao.html.
 
-renomeie angular/templates/inicio.template.html para angular/templates/inicio.html.
+angular/templates/inicio.template.html para angular/templates/inicio.html.
 
-Atualize o conteúdo dos dois arquivos renomeados com seus dados.
+Atualize o conteúdo dos arquivos renomeados com seus dados.
 
 
 * Instruções Cloudant:
