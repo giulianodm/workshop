@@ -30,15 +30,15 @@ Clone o repositório
   git clone https://github.com/placerda/workshop.git
 ```
 
-Em seguida renomeie os seguintes arquivos:
+* Em seguida renomeie os seguintes arquivos:
 
- - helpers/config.template.js para helpers/config.js.
+  - helpers/config.template.js para helpers/config.js.
 
- - manifest.yml.template para manifest.template.yml.
+  - manifest.yml.template para manifest.template.yml.
 
- - angular/templates/confirmacao.template.html para angular/templates/confirmacao.html.
+  - angular/templates/confirmacao.template.html para angular/templates/confirmacao.html.
 
- - angular/templates/inicio.template.html para angular/templates/inicio.html.
+  - angular/templates/inicio.template.html para angular/templates/inicio.html.
 
 Atualize o conteúdo dos arquivos renomeados com seus dados.
 
