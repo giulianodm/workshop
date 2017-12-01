@@ -5,6 +5,8 @@ config.js
 manifest.yml
 local.env
 whisk/
+inicio.html
+confirmacao.html
 
 # Logs
 logs
